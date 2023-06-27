@@ -72,7 +72,7 @@ void read_users_file()
 
         // Cria uma estrutura de usuário e atribui os valores lidos.
 
-        users *user = malloc(sizeof(user));
+        users *user = malloc(sizeof(users));
         user->id = strdup(id);
         user->name = strdup(name);
         user->email = strdup(email);
@@ -83,7 +83,8 @@ void read_users_file()
         {
             inicio = user;
             final = user;
-        }else
+        }
+        else
         {
             final->prox = user;
             final = user;
@@ -96,26 +97,26 @@ void read_users_file()
     fclose(users_file);
 }
 
-void print_list(){
+void print_list()
+{
     users *aux = inicio;
     for (int i = 0; i < tam_Users; i++)
     {
-        printf("%s\n", aux->name);
+        printf("%s -=- %s -=- %s -=- %s\n", aux->id, aux->name, aux->email, aux->password);
+        aux = aux->prox;
     }
-    
-    
 }
 
 int main()
 {
     // linha 38 até linha 42 crio 1 usuário, mas é gambiarra, vai ser mudado pela interação com o IG.
-    users Leticia;
-    Leticia.id = "02";
-    Leticia.name = "Leticia";
-    Leticia.email = "Leticia@gmail.com";
-    Leticia.password = "1234";
+    // users Leticia;
+    // Leticia.id = "02";
+    // Leticia.name = "Leticia";
+    // Leticia.email = "Leticia@gmail.com";
+    // Leticia.password = "1234";
 
-    create_user(Leticia);
+    // create_user(Leticia);
 
     read_users_file();
     print_list();
